@@ -1,14 +1,13 @@
 class paper {
-    constructor(x, y, width, height) {
+    constructor(x, y, radius) {
       var options = {
           isStatic:false,
           'restitution':0.3,
           'friction':0.5,
           'density':1.2
       }
-      this.body = Bodies.rectangle(x, y, width, height, options);
-      this.width = width;
-      this.height = height;
+      this.body = Bodies.circle(x, y, radius, options);
+      this.radius = radius;
       
       World.add(world, this.body);
     }
@@ -16,9 +15,9 @@ class paper {
       var pos =this.body.position;
       push();
       translate(pos.x,pos.y);
-      rectMode(CENTER);
+      ellipseMode(RADIUS);
       fill(255);
-      rect(0,0, this.width, this.height);
+      ellipse(0,0, this.radius,this.radius);
       pop();
     }
   }
